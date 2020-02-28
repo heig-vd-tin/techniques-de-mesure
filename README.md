@@ -19,3 +19,7 @@ Les contributions à ce cours sont les bienvenues. Les règles à respecter sont
 - Fin de lignes POSIX `LF`
 - Figures en format vectoriel dans la mesure du possible
 - Citez vos sources
+
+## Compilation
+
+Pour compiler sous Windows, utilisez le script build.bat
