@@ -14,12 +14,17 @@
 \usepackage{amsthm}
 \usepackage[framemethod=tikz]{mdframed}
 
+% For separate compilation of child documents (CBD)
+\usepackage{subfiles}
+
 
 % Math
 \usepackage{amscd}
 \usepackage{amsmath}
-\usepackage{gensymb} % symbole degré: \degree
+\usepackage{gensymb} % CBD: symbole degré: \degree
 \usepackage{parskip}
+\usepackage{textcomp} % CBD: symbole \textperthousand
+\usepackage[T1]{fontenc} % CBD: évite plein d'erreurs
 
 \theoremstyle{definition}
 \newmdtheoremenv[
@@ -57,33 +62,34 @@
 %%\input{src/40-mesures-multidimensionnelles}
 %%\input{src/45-ajustement-modele}
 
-\input{src/Chap1a-metrologie_ch1}
-\input{src/Chap2-chaine-de-mesure}
-\input{src/Chap3-etalonnage_ajustage}
-\input{src/Chap4a-mesure}
-\input{src/Chap4b-mesure-stochastique}
-\input{src/Chap4c-mesures-multidimensionnelles}
-\input{src/Chap4d-ajustement-modele}
-\input{src/Chap5-capteurs}
+\subfile{Chap1a-metrologie_ch1}
+\subfile{Chap2-chaine-de-mesure}
+\subfile{Chap3-etalonnage_ajustage}
+\subfile{Chap4a-mesure}
+\subfile{Chap4b-mesure-stochastique}
+\subfile{Chap4c-mesures-multidimensionnelles}
+\subfile{Chap4d-ajustement-modele}
+\subfile{Chap5-capteurs}
 
-\appendix
+%\appendix
 
 %%\input{src/80-histoire-metrologie}
 %%\input{src/85-nomenclature}
 %%\input{src/90-erreurs-de-mesures}
 %%\input{src/95-systeme-de-mesure}
-\input{src/Chap1b-metrologie_ch2}
-\input{src/Chap1c-metrologie_ch3}
-\input{src/Chap1d-metrologie_ch4}
-\input{src/Chap1e-metrologie_ch5}
+%\input{src/Chap1b-metrologie_ch2}
+%\input{src/Chap1c-metrologie_ch3}
+%\input{src/Chap1d-metrologie_ch4}
+%\input{src/Chap1e-metrologie_ch5}
 
 %\input{src/solutions.tex} (missing figures there)
 
 \backmatter
 
 \listoffigures
-\listoftables
+%\listoftables
 
 \input{src/colophon}
+
 
 \end{document}
