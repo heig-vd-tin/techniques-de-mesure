@@ -1,0 +1,166 @@
+\chapter{Méthodes générales de mesure}
+
+Considérons un pied-à-coulisse, et une balance à ressort. A priori, ces deux instruments n'ont rien à voir l'un avec l'autre. En fait, ils ont bien une caractéristique en commun : la mesure du mesurande s'effectue en examinant la position d'un curseur sur une échelle graduée, position obtenue après extension du bras de mesure pour le pied-à-coulisse, et extension du ressort jusqu'à l'équilibre pour la balance. Cet exemple introduit le fait que tous les procédés de mesurage peuvent se ramener à un certain nombre limité de méthodes fondamentales, que l'on va introduire ici, et ceci \textbf{indépendamment du type de mesurande}.
+
+\begin{wrapfigure}[14]{r}[0pt]{3cm}
+   \centering
+   \vspace{-3mm}
+   \includegraphics[width=3cm]{fig/mesdev.pdf} 
+   \caption{Peson à ressort}
+   \label{fig:mesdev}
+\end{wrapfigure}
+%..........................................
+\section{Mesure par déviation}
+%..........................................
+
+C'est la méthode qui consiste à obtenir la déviation d'un système, d'une position d'équilibre qu'il occupait en l'absence de mesurande, à une nouvelle position d'équilibre qu'il occupe en présence du mesurande.  L'écart entre les deux positions fournit (plus ou moins) directement la mesure.
+
+Dans la méthode de déviation par \textbf{élongation simple}, les deux positions sont des positions au sens géométrique du mot; elles ne mettent pas en jeu un équilibre particulier de force. Ainsi en est-il de la mesure d'une longueur au pied à coulisse, où l'opérateur déplace les palpeurs pour venir en contact entre eux (zéro), ou sur la pièce (mesure).
+
+Dans la méthode de déviation par \textbf{équilibre spontané}, les positions d'équilibre sont le résultat d'une opposition entre deux forces égales. L’exemple typique d’une mesure par équilibre spontané est le \textbf{peson à ressort} (Fig.~\ref{fig:mesdev}) : la masse $m$ à mesurer est posée sur un plateau fixé à l'extrémité d'un ressort vertical. La force de résistance du ressort de constante $k$ augmente proportionnellement à l'allongement $x$ jusqu'à égaler le poids $mg$ de la masse,
+\begin{equation}
+kx=mg\ \ \text{d'où}\ \ m=k/g\cdot x
+\end{equation}
+et c'est la lecture de la déviation $x$, qui, multipliée par le rapport $k/g$, permet de déterminer la masse. En général, l'échelle de lecture est directement graduée en unité de masse, ce qui s'obtient en effectuant le mesurage de masses étalon.
+
+Le \textbf{galvanomètre} à cadre mobile (Fig.~\ref{fig:galva}) est un autre exemple de méthode par déviation. C'est l'égalité du couple produit par les forces électromagnétiques et du contre-couple généré par la torsion du fil de suspension du cadre qui définit la déviation qui donne la mesure. Le système se déforme jusqu'à ce que cet équilibre soit atteint.
+\begin{figure}[h]
+   \centering
+   \includegraphics[height=4.6cm]{fig/galva.pdf} 
+   \caption{Principe du galvanomètre. A gauche, on observe l'aimant permanent générateur d'un champ magnétique à travers le cadre mobile du galvanomètre. A droite, vue détaillée du cadre et de la force d'origine électromagnétique subie par le cadre dans lequel circule le courant (ou la tension) que l'on désire mesurer.}
+   \label{fig:galva}
+\end{figure}
+
+Dans ce cas, cependant, la transformation et transmission d'énergie sont moins directes que dans le cas du peson~: le premier effet de la tension électrique appliquée aux bornes du cadre sera d'instaurer un courant continu qui dépend des constantes électriques du circuit. Ce courant, plongé dans le champ magnétique de l'aimant permanent, crée une force électromagnétique mettant en rotation le cadre, et partant, tord le fil de torsion, support du cadre. Le contre-couple dû à la torsion du fil augmente avec l'angle de rotation du cadre, jusqu'à se trouver en équilibre et compenser le couple engendré par la force électromagnétique. La rotation est alors stabilisée, et après quelques instants d'oscillation, la valeur finale pourra être lue.
+
+\newpage
+Les appareils qui utilisent la \textbf{méthode de déviation} sont innombrables en métrologie. Quelques exemples élémentaires sont mentionnés dans le tableau ci-dessous~:
+\begin{center}
+\begin{tabular}{llll}
+Appareil	 & Mesurande & Grandeur d'opposition & Mesure\\ \hline
+Pied-à-coulisse & distance & -- & distance \\
+Peson à ressort & force & contrainte ressort & allongement\\
+Peson à contrepoids & force & moment d'une force & angle\\
+Baromètre à mercure & pression & pression hydrostatique & différence de niveau\\
+Thermomètre à alcool & température & -- & déplacement d'un niveau
+\end{tabular}
+\end{center}
+
+\subsection*{Précautions d'emploi de la méthode par déviation}
+
+Mentionnons quelques précautions exigées par l'emploi de la méthode par déviation :
+\begin{itemize}\itemsep2pt
+\renewcommand{\labelitemi}{$\bullet$}
+\item\textbf{Mise à zéro} : la mesure est fournie par l'écart à partir d'une position d'origine prise comme zéro. Il est donc impératif de vérifier que l'instrument indique effectivement zéro en l'absence de mesurande (absence d'erreur systématique, instrument 100 \% juste). Sinon il faudra noter la position de départ qui est un << faux zéro >>. Les instruments électroniques, les thermomètres, les manomètres présentent souvent des décalages de zéro réglables (en anglais \textit{offset}).
+\item Il faut attendre que l'\textbf{équilibre soit atteint}.
+\item Il faut aussi porter attention aux \textbf{conditions de linéarité}~: en effet, la loi la plus avantageuse qui puisse relier le mesurande et la mesure, tant pour son interprétation immédiate que pour son traitement ultérieur, est une \textbf{relation linéaire}, comme celle du peson à ressort. C'est elle que l'on cherche généralement à obtenir. Un bon moyen d'y parvenir est de n'utiliser que des transducteurs\footnote{Un transducteur est un dispositif convertissant un signal physique en un autre; par exemple un signal lumineux en un signal nerveux (vision animale) ou en un signal électrique (photorécepteur).} linéaires dans la chaîne de mesurage. Les transducteurs sont en général linéaires dans une plage plus ou moins étroite de l'étendue, généralement au voisinage du zéro. Si le système de mesure comporte un traitement numérique, il est possible d'introduire, dans le programme traitant les mesures, la courbe d'étalonnage du capteur, éliminant les problèmes de non-linéarité.
+\end{itemize}
+
+\newpage
+
+%..........................................
+\section{Mesure par comparaison}
+%..........................................
+
+\begin{wrapfigure}[8]{l}[5pt]{8cm}
+   \centering
+   \vspace{-6mm}
+   \includegraphics[width=8cm]{fig/asscomp.pdf} 
+   \label{fig:asscomp}
+\end{wrapfigure}
+Les mesures par comparaison couvrent un très large nombre de mesures de toutes grandeurs. Le principe général est de comparer le mesurande $x$ à une grandeur connue de même nature $y$ pour obtenir $x=y$ ou $x-y=0$.
+
+Cette grandeur de comparaison est parfois réglée par un opérateur (ou un dispositif automatique) qui agit sur $y$ pour obtenir que la valeur de $x-y$ formée par le \textbf{détecteur d'écart} soit nulle. Les principales variates de la méthode par comparaison sont décrites dans ce qui suit.
+
+\subsection*{A. Méthode d'opposition ou méthode de zéro}
+
+\begin{figure}[h]
+   \centering
+   \includegraphics[height=4.42cm]{fig/balance.png}
+   \includegraphics[height=4.42cm]{fig/dynamo.png}
+   \caption{Gauche~: balance de Roberval. Droite~: dynamomètre électromagnétique.}
+   \label{fig:balance}
+\end{figure}
+Une \textbf{balance de Roberval} (Fig.~\ref{fig:balance}) possède tous les organes d'un appareil de zéro~: le soustracteur (fléau), le détecteur d'écart (l'aiguille), la grandeur d'opposition (masses étalon). C'est l'opérateur qui apprécie l'écart $x-y$ puis dépose ou retire les masses étalon pour obtenir l'équilibre.
+
+Un autre exemple de méthode de zéro, par asservissement à l'écart $x-y$, est présenté en Fig.~\ref{fig:balance} (droite)~: il s'agit d'un \textbf{dynamomètre électromagnétique}. L'équilibre de la force présente sur le plateau est réalisé par une force électromagnétique grâce à un dispositif analogue à celui d'une bobine de haut-parleur. La commande électrique comprend le détecteur d'écart, la source d'énergie, l'amplificateur de puissance réglant l'intensité du courant, et un ampèremètre fournissant la valeur du poids.
+
+\subsection*{B. Montages en pont, méthode par différence}
+
+\begin{wrapfigure}[15]{r}[0pt]{7cm}
+   \centering
+   \includegraphics[width=7cm]{fig/wheatstone.pdf}
+   \caption{Pont de Wheatstone.}
+   \label{fig:pont}
+\end{wrapfigure}
+
+Un pont de Wheatstone est une méthode pour mesurer la caractéristique de composants électriques (résistances). Il est traditionnellement présenté comme un quadrilatère avec deux connections diagonales (AB et CD, Fig.~\ref{fig:pont}). Les 4 côtés du quadrilatère constituent les bras. Une des diagonales (CD) contient l'alimentation en tension électrique; l'autre (AB) l'appareil de détermination du zéro, par exemple un ampèremètre.
+
+Lorsque que l'on mesure par example la valeur d'une resistance en utilisant la méthode directe, par déviation, toute erreur sur l'alimentation du circuit de mesure affecte directement l'exactitude de la mesure, puisqu'il existe une relation linéaire entre la mesure de la tension électrique et la valeur de la résistance ($R=U/I$).
+
+Ce problème est résolu avec le montage en pont. Imaginons que nous désirions déterminer la valeur de la résistance Y dans le schéma ci-contre. $R_1$ et $R_2$ sont parfaitement connues, et $X$ est un potentiomètre calibré, dont on peut parfaitement régler la valeur. Le principe de la mesure consiste à ajuster le potentiomètre de manière à ce que le courant $I_G$ passant par le centre du pont soit nul. Dans ce cas et ce cas seulement, on est certain que les courants passant dans les deux bras à travers $R_1$ et $X$ d'une part et $R_2$ et $Y$ d'autre part sont identiques. Ce qui implique alors que $R_1+X=R_2+Y$, d'où l'on déduit immédiatement $Y$.
+
+Au contraire du cas de la mesure par déviation, on voit donc qu'ici il n'est pas nécessaire de connaitre la valeur de la tension d'alimentation. En équilibrant le courant dans les deux bras, on a pu ramener la mesure de la résistance inconnue à une \textbf{comparaison}, et en s'affranchissant complètement des conditions d'alimentation.
+
+\subsection*{C. Méthode de la déviation constante}
+
+Dans cette variante de la méthode de comparaison, la grandeur de comparaison conserve une valeur constante, $C$.  On ajoute au mesurande inconnu $x$ la quantité nécessaire $y$ pour atteindre la valeur fixée: $x + y = C$. Nous pourrions par exemple choisir $C=0$ et trouver la valeur $y$ qui annule $x+y$, d'où nous aurions que le $x$ recherché est égal à $-y$.
+
+\subsection*{D. Méthode de la substitution}
+
+Ici, au mesurande $x$ on substitue une grandeur connue $y$ qui doit provoquer un effet identique. Puisqu'il s'agit de comparer deux effets successifs, il faut qu'un élément garde la trace du premier effet; il peut prendre dans certains appareils une place très importante, sous le nom de mémoire. Dans le cas du peson à ressort, par exemple, on décroche le poids inconnu et on le remplace par des poids marqués jusqu'à retrouver l'indication précédemment notée (la valeur qui a été gardée en mémoire).
+\begin{figure}[t]
+   \centering
+   \includegraphics[width=12cm]{fig/metsub.png} 
+   \caption{Méthode de la substitution.}
+   \label{fig:metsub}
+\end{figure}
+
+Pour une balance (Fig.~\ref{fig:metsub}, gauche) on fait l'équilibre avec une \textbf{tare}, puis on substitue à l'objet à peser des masses étalonnées. C'est la méthode dite de \textbf{Borda}. C'est la tare qui fait office de mémoire. La méthode s'étend à toutes sortes de mesures: différence de potentiel dans certains convertisseurs analogique-numérique, radioactivité, longueur, etc.
+
+\begin{wrapfigure}[12]{r}[6pt]{6cm}
+   \vspace{-3mm}
+   \centering
+   \includegraphics[width=6cm]{fig/perm.pdf}
+   \caption{Méthode de la permutation.}
+   \label{fig:perm}
+\end{wrapfigure}
+En contrôle dimensionnel (Fig.~\ref{fig:metsub}, droite), il est classique de substituer à la pièce dont la cote inconnue est gardée en mémoire sur un comparateur, un empilement de cales étalons, jusqu'à ramener le comparateur à la même indication.
+
+\subsection*{E. Méthode de la permutation}
+
+Lorsqu'on utilise un appareil qui réalise l'égalité $ax=by$, afin de déterminer la valeur du mesurande $x$ à partir de la grandeur de comparaison $y$, il faut connaître, en principe, le rapport $a/b$. Cependant, il est possible d'éliminer ce facteur en effectuant deux mesures selon le méthode illustrée avec le cas particulier de la mesure d'une masse (Fig.~\ref{fig:perm}). L'équilibre des moments donne
+\begin{equation}
+a\,x=b\,y\ \ \text{et}\ \ a\,(y+z)=b\,x
+\end{equation}
+et en divisant membre à membre on obtient
+\begin{equation}
+\frac{x}{y+z}=\frac{y}{x}\ \ \text{d'où}\ \ x=\sqrt{y\,(y+z)}
+\end{equation}
+Appliquée aux balances à bras inégaux, cette méthode est connue sous le nom de méthode de \textbf{Gauss}.
+
+\subsection*{F. Appareils à seuil}
+
+Ici on cherche à connaître l'instant - ou les conditions - telles que la grandeur $x$ atteint une valeur prédéterminée. Ceci se rencontre en particulier lorsqu'on cherche à régler une variable à une valeur donnée (régulation), mais se rencontre aussi dans de nombreux processus métrologiques. La grandeur de comparaison a une valeur fixe - \textbf{le seuil} - et toute action est bloquée tant que le mesurande ne le surpasse pas. L’exemple typique en sont les accéléromètres des airbags.
+
+%..........................................
+\section{Avantages et inconvénients des mesures par déviation et par comparaison}
+%..........................................
+
+Les caractères des mesures par déviation et par comparaison sont très différents. Le bilan sera dans l'ensemble favorable aux dernières, qui n'ont guère contre elles que leur relative complexité, et leur prix.
+
+C'est le \textbf{détecteur d'écart} qui donne aux mesures par comparaison l'essentiel de leur caractère. L'absence d'exigences métrologiques à son égard, par opposition aux exigences formées pour les instruments de mesure par déviation, rend les mesures par comparaison plus précises que celles par déviation.
+
+En effet, dans les méthodes par comparaison, le repérage de la position zéro est assuré par le détecteur d'écart qui fournit le \textbf{signal d'erreur} dont seuls l'existence et le signe nous intéressent. Ce fait permet de simplifier à l'extrême le détecteur sans exiger de lui des qualités métrologiques poussées. Il suffit que sa position d'équilibre soit stable, qu'il soit fidèle au zéro. 
+
+Dans tout instrument de mesure, la \textbf{justesse} est limitée par les défauts intrinsèques de l'instrument. Ces défauts se retrouvent évidemment aussi bien dans les mesures par déviation que dans les mesures par comparaison. Dans le cas des balances, l'influence des erreurs d'étalonnage, des erreurs sur les masses utilisées, des erreurs sur le parallélisme des couteaux, des erreurs sur les bras du fléau, etc. se retrouvent dans les deux cas.
+
+Il n'en va pas de même des \textbf{erreurs de lecture}. Dans la mesure par déviation, l'erreur de lecture représente en effet une fraction donnée de l'étendue de mesure, généralement de l'ordre de 0.1 à 1\%, alors que dans la méthode du zéro, la partie principale de la mesure porte sur des grandeurs connues avec exactitude, et leur somme ne peut être entachée d'aucune erreur (sauf de grossières erreurs, baptisées parasites par les normes, et qui sont en général faciles à dépister). L'erreur de lecture ne porte que sur l'évaluation du zéro, obtenue d'une manière précise par coïncidence. Pratiquement, elle est 100 à 1000 fois plus petite que l'erreur de la mesure par déviation.
+
+Toutefois, l'usage de la méthode de déviation paraît plus simple, donc plus prompte. Par exemple, un corps à peser est posé sur le plateau du peson à ressort et il suffit d'attendre un temps suffisant pour que l'élongation ait le temps de se stabiliser et que les oscillations soient amorties. Alors que la méthode du zéro suppose une série d'opérations qui comprennent la constatation d'un écart, l'application d'un réglage puis l'attente d'un nouvel équilibre.
+
+Finalement, toute mesure consomme de l'énergie. Cependant il y a de ce point de vue une grande différence entre les méthodes de déviation et de comparaison. Dans le premier cas l'énergie correspond à la déformation du système de mesure de sa position zéro à sa position d'équilibre final. Dans le second cas, elle ne correspond qu'à la déformation nécessaire pour observer l'écart.
+
+Par exemple, si on évalue la tension d'une pile avec un voltmètre à cadre, il y a passage d'un courant tant que dure la mesure, et donc consommation d'énergie. Si au contraire on utilise la méthode d'opposition, aucun courant ne circule dans le galvanomètre de zéro et il n'y a aucune consommation d'énergie (donc aucune déformation du phénomène) autre que celle qui peut correspondre au plus petit écart discernable du galvanomètre. L'instrument de mesure se comporte comme s'il avait une impédance infinie (c-à-d une résistance interne si grande qu'aucun courant ne peut le pénétrer).
+
+En conclusion, il n'y a pas de méthode qui soit absolument meilleure que d'autre. Tout va dépendre de l'exactitude désirée, de la nature du mesurande, du budget disponible, etc. Comme toujours, l'ingénieur devra faire son choix en trouvant un équilibre entre ces différentes contraintes.
