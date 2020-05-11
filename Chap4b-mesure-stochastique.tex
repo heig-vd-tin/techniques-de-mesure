@@ -1,10 +1,12 @@
 \documentclass[main.tex]{subfiles}
 \begin{document}
 
-\chapter{La mesure vue comme stochastique}
+\iftrue
+\newpage
+\section{La mesure vue comme stochastique}
 \label{chap:measurements-stochastic}
 
-\section{La mesure est une variable aléatoire}
+\subsection{La mesure est une variable aléatoire}
 
 Toutes les grandeurs physiques que l'on peut mesurer en ingénierie, physique, etc. sont soit \textbf{stables}, par exemple les dimensions mécaniques d'une pièce, la masse d'un proton, soit \textbf{variables}, par exemple la vitesse en un point donné d'un fluide turbulent, ou la pression atmosphérique.
 
@@ -14,15 +16,15 @@ De fait, lorsque l'on effectue la mesure d'une grandeur physique, il est excepti
 
 Nous considérerons donc, dans ce cours, que le résultat de toute mesure est entaché d'une fluctuation aléatoire \textbf{non prédictible}, et nous allons étudier les caractéristiques statistiques de ces fluctuations.
 
-\section{Définitions}
+\subsection{Définitions}
 
-\subsection{Variable aléatoire}
+\subsubsection{Variable aléatoire}
 
 Considérons une grandeur physique quelconque $X$, que l'on peut mesurer (comme la température). Si, d'une mesure à l'autre, le résultat de la mesure de $X$, noté $x$, varie de manière aléatoire, non prédictible, alors on dira que la variable $X$ est une \textbf{variable de type aléatoire} (VA dans la suite).
 
 En général, on s'intéresse à la valeur moyenne de la VA, et à son écart-type. Pour connaitre ces propriétés statistiques, il faudra faire un grand nombre $N\gg 1$ de mesures individuelles $x_i$, $i=1\dots N$.
 
-\subsection{Variable aléatoire stationnaire}
+\subsubsection{Variable aléatoire stationnaire}
 
 Si les propriétés statistiques d'une VA - moyenne, écart-type, etc. - ne changent pas au cours du temps, alors cette VA est dite \textbf{stationnaire}.
 \begin{description}
@@ -31,17 +33,17 @@ Si les propriétés statistiques d'une VA - moyenne, écart-type, etc. - ne chan
 \end{description}
 En fait, il est plus facile d'imaginer des exemples de VA non-stationnaires que le contraire. Une VA stationnaire, souvent, ne l'est que pendant un temps limité. Il suffit que les conditions externes à la mesure changent pour que les propriétés statistiques de la VA changent aussi. Par exemple, toutes les VA météorologiques ne sont que des VA momentanément stationnaires.
 
-\subsection{Variable aléatoire discrète}
+\subsubsection{Variable aléatoire discrète}
 
 Une VA \textbf{discrète} est une VA qui ne peut prendre que des valeurs \textbf{bien déterminées}. Attention, ces valeurs ne sont pas forcément des valeurs entières ! Elles peuvent être le multiple d'une valeur de base, réelle. Par exemple, la VA dont la population est $[0,\pi,2\pi,3\pi,4\pi,5\pi,\cdots,\infty[$ est une VA discrète.
 
 La population d'une VA discrète peut être \textbf{finie ou infinie}. La VA précédente est de population infinie. La VA de population [A,C,G,T] est discrète, de population finie.
 
-\subsection{Variable aléatoire continue}
+\subsubsection{Variable aléatoire continue}
 
 Une VA continue est une VA qui peut prendre \textbf{n'importe quelle valeur réelle}. La population d'une VA continue est forcément infinie, même si le domaine dans lequel elle prend ses valeurs est borné. Par exemple, la VA associée à la vitesse de n'importe quelle particule dans l'Univers est forcément bornée par l'intervalle $[0,c]$ où $c$ est la vitesse de la lumière dans le vide.
 
-\subsection*{Quelques exemples de variables aléatoires}
+\subsubsection*{Quelques exemples de variables aléatoires}
 
 Les VA suivantes sont-elles continues ou discrètes ? Stationnaires ? De population limitée ou infinie ?
 \begin{itemize}
@@ -50,17 +52,17 @@ Les VA suivantes sont-elles continues ou discrètes ? Stationnaires ? De populat
     \item La masse des petits cailloux que l'on s'amuse à jeter dans l'eau, au bord d'une rivière, au lieu de travailler ses cours: cette VA est continue, stationnaire, de population infinie.
 \end{itemize}
 
-\section{Universalité des lois de probabilité}
+\subsection{Universalité des lois de probabilité}
 
 Les probabilités interviennent dans tous les domaines de l'activité humaine (science, technologie, sociologie, etc.). Or, lorsque l'on étudie les répartitions de probabilité des VA associées à n'importe lequel de ces domaines, on retombe \textbf{toujours} sur les mêmes formules ! Seuls les paramètres de ces formules varient d'un cas à l'autre. Le comptage des abeilles qui rentrent à la ruche au coucher du soleil obéit aux mêmes lois que le nombre de voitures dans les bouchons sur l'autoroute à l'heure de pointe du soir, et au nombre de cancers du poumon dus à la pollution engendrée par ce trafic.
 
 Nous allons présenter ici ces différentes lois, en espérant qu'elles puissent vous servir un jour à compter le nombre de papillons dans les champs plutôt que le nombre de balles que tire  une mitrailleuse... bien qu'encore une fois les mathématiques soient les mêmes.
 
-\section{Les distributions de probabilité des variables aléatoires discrètes}
+\subsection{Les distributions de probabilité des variables aléatoires discrètes}
 
 Ce paragraphe constitue un rappel général sur les probabilités des VA discrètes, permettant de mieux appréhender les VA continues, dans les paragraphes suivants.
 
-\subsection{La probabilité discrète}
+\subsubsection{La probabilité discrète}
 
 Soit la VA \textbf{discrète} $X$, mesure d'une certaine grandeur physique. L'ensemble des valeurs possibles de $X$ est donné par la population $\mathcal{P}=[x_1,x_2,x_3,\cdots,x_{N_p}]$, de dimension $N_p$.
 % La probabilité $p_k$ que la VA $X$ prenne la valeur $x_k$ est définie par le quotient
@@ -120,7 +122,7 @@ La distribution de probabilité est montrée en figure~\ref{fig:ddjddd}.
     \label{fig:ddjddd}
 \end{figure}
 
-\subsection{Propriétés de la probabilité discrète}
+\subsubsection{Propriétés de la probabilité discrète}
 
 \begin{itemize}
     \item $0\le P[x_k]\le 1$, 0 si l'événement est impossible, 1 si il est certain.
@@ -129,7 +131,7 @@ La distribution de probabilité est montrée en figure~\ref{fig:ddjddd}.
     \item si x et y sont deux VA discrètes indépendantes, de populations identiques ou différentes, alors $P[x=x_k\ \text{et}\ y=y_l]=P[x=x_k]\cdot P[y=y_l]$. Par exemple, soit $p_1=1/20$ la probabilité qu'un étudiant de la HEIG-VD soit une fille, et $p_2=1/10$ la probabilité d'attraper la grippe en hiver. La probabilité pour qu'une étudiante de l'école ait la grippe en hiver est donc égale à $p_1\cdot p_2=1/200$.
 \end{itemize}
 
-\subsection{Différence entre fréquence et probabilité}
+\subsubsection{Différence entre fréquence et probabilité}
 
 La fréquence $f_k$ d'une classe $k$ est une valeur que l'on détermine à partir d'un échantillon de mesures, de dimension forcément limité, puisqu’ il s'agit de mesures réelles. Donc on comprend tout de suite que les valeurs des fréquences ne seront pas stables, puisque les échantillons de mesures réelles ne sont jamais identiques (sauf exception). Tandis qu'une probabilité est une valeur que l'on déduit soit d'un raisonnement - comme nous l'avons fait ci-dessus avec le jet de 2 dés - soit d'un nombre très grand de mesures, assez grand pour que les valeurs $p_k$ soient stables. La fréquence ne s'associe donc à la probabilité que lorsque le nombre de mesures $N_m$ tend vers l'infini:
 \begin{equation}
@@ -137,7 +139,7 @@ La fréquence $f_k$ d'une classe $k$ est une valeur que l'on détermine à parti
 \end{equation}
 
 \newpage
-\subsection{Moments d'une variable aléatoire discrète}\label{par:mdvad}
+\subsubsection{Moments d'une variable aléatoire discrète}\label{par:mdvad}
 
 Considérons une VA discrète de population $\mathcal{P}=[1,2,3,4,5,6,7,8,9,10]$. On effectue $N_m=100$ mesures, données dans le tableau ci-dessous:
 \begin{center}
@@ -207,7 +209,7 @@ que l'on appelle aussi la variance, et \textbf{l'écart-type} est simplement
     \sigma(x)=\sqrt{\text{EQM}(x)}
 \end{equation}
 
-\subsection{Fonction de répartition d'une variable aléatoire discrète}
+\subsubsection{Fonction de répartition d'une variable aléatoire discrète}
 
 La somme partielle
 \begin{equation}
@@ -215,7 +217,7 @@ La somme partielle
 \end{equation}
 définit la \textbf{fonction de répartition} de la VA. On a $F_1=p_1$ et $F_{N_p}=1$, où $N_p$ est la dimension de la population. Voir la figure~\ref{fig:edfdr}, pour la fonction de répartition de l'exemple des 100 mesures précédent. Nous avons aussi vu un exemple de fonction de répartition au premier chapitre, avec la somme partielle des fréquences. À nouveau, la somme partielle des fréquences ne s'identifie à la fonction de répartition que lorsque le nombre de mesures tend vers l'infini.
 
-\subsection{Mode et médiane d'une variable aléatoire discrète}
+\subsubsection{Mode et médiane d'une variable aléatoire discrète}
 
 Le \textbf{mode} de la VA est la valeur de $x$ pour laquelle $p_k$ est maximale, et la \textbf{médiane} la valeur de $x$ qui sépare la probabilité en deux sommes partielles égales:
 \begin{equation}
@@ -223,11 +225,11 @@ Le \textbf{mode} de la VA est la valeur de $x$ pour laquelle $p_k$ est maximale,
 \end{equation}
 Ici il y a une petite difficulté: il peut se faire qu'aucune valeur de la population $\mathcal{P}$ ne satisfasse à cette définition, c.-à-d. que la valeur de la médiane soit située entre deux valeurs successives de $\mathcal{P}$, comme c'est le cas dans l'exemple ci-dessus: la somme des probabilités entre $x=1$ et $x=5$ est de 0.5, et la somme de $x=6$ à $x=10$ est aussi égale à 5. La médiane est donc située entre $x=5$ et $x=6$, soit, par interpolation $x=5.5$.
 
-\section{Les distributions de probabilité des variables aléatoires continues}
+\subsection{Les distributions de probabilité des variables aléatoires continues}
 
 Ce paragraphe constitue un rappel général sur les probabilités des VA continues. Au prochain paragraphe, nous introduirons les distributions continues les plus courantes.
 
-\subsection{La densité de probabilité}
+\subsubsection{La densité de probabilité}
 
 Soit une VA \textbf{continue} x (un nombre réel), mesure d'une grandeur physique $\mathcal{G}$. L'ensemble des valeurs possibles de $x$ est la population $\mathcal{P}$. Cette population est un intervalle continu de valeurs réelles, entre 2 bornes (qui peuvent être infinies). Par conséquent, la dimension de la population d'une VA continue est forcément infinie.
 
@@ -253,7 +255,7 @@ En revanche, la probabilité que la VA appartienne à un certain intervalle $[a,
 \end{equation}
 \textbf{On veillera donc à ne pas confondre probabilité et densité de probabilité !}
 
-\subsection{Propriétés de la probabilité continue}
+\subsubsection{Propriétés de la probabilité continue}
 
 \begin{itemize}
     \item si $[a,b]\in\mathcal{P}$, alors $0\le P\{x\in[a,b]\}\le 1$
@@ -262,7 +264,7 @@ En revanche, la probabilité que la VA appartienne à un certain intervalle $[a,
     \item si x et y sont deux VA continues indépendantes, de densités de probabilité $p_x$ et $p_y$, alors $P\{x\!\in\![a,b]\ \text{et}\ y\!\in\![c,d]\}=P\{x\!\in\![a,b]\}\cdot P\{y\!\in\![c,d]\}=\int_{a}^{b} p_x(x)\text{d}x\cdot\!\int_{c}^{d} p_y(y)\text{d}y$.
 \end{itemize}
 
-\subsection{Moments d'une variable aléatoire continue}\label{par:mdvac}
+\subsubsection{Moments d'une variable aléatoire continue}\label{par:mdvac}
 
 Le moment d'ordre $m$ d'une VA continue est défini par la moyenne de $x^m$, pondérée par la densité de probabilité $p(x)$, sur toute l'étendue de la population $\mathcal{P}$. De manière similaire au cas des VA discrètes, on a
 \begin{equation}
@@ -285,7 +287,7 @@ et \textbf{l'écart-type} sera, comme d'habitude
 \end{equation}
 à noter que, très souvent, on note la variance par $\sigma^2$.
 
-\subsection{Fonction de répartition d'une variable aléatoire continue}
+\subsubsection{Fonction de répartition d'une variable aléatoire continue}
 
 La fonction de répartition $F(X)$ détermine la probabilité que la VA $x$ soit inférieure ou égale à une certaine limite $X$,
 \begin{equation}
@@ -300,7 +302,7 @@ $$
     \frac{\text{d}}{\text{d}X}\left[P(X)-P(\text{min}(x))\right]=p(X)
 $$
 
-\subsection{Mode et médiane d'une variable aléatoire continue}
+\subsubsection{Mode et médiane d'une variable aléatoire continue}
 
 Le mode est, comme toujours, la valeur de $x$ associée au maximum de la densité de probabilité $p(x)$. La médiane de la VA - $\text{med}(x)$ - est la valeur de $x$ qui sépare la probabilité en deux valeurs égales, naturellement égales à 1/2,
 \begin{equation}
@@ -309,11 +311,11 @@ Le mode est, comme toujours, la valeur de $x$ associée au maximum de la densit�
 \end{equation}
 Dans le cas d'une VA continue, la médiane est donc définie sans ambiguité.
 
-\section{Distributions de probabilité continues usuelles}
+\subsection{Distributions de probabilité continues usuelles}
 
 Nous présentons ci-dessous les distributions de probabilité continues que l'on retrouve le plus souvent en pratique. {\bf Dans le cas des VA continues, l'usage prévaut que l'on utilise aussi le terme distribution de probabilité pour désigner ce qui est en fait une densité de probabilité}, et dans ce cours, on utilisera indistinctement un terme ou l'autre - uniquement pour les VA continues, cela va de soi. En général, c'est en analysant qualitativement le processus de la mesure que l'on va pouvoir prédire le type de loi de probabilité auquel on doit s'attendre.
 
-\subsection{La distribution uniforme}
+\subsubsection{La distribution uniforme}
 
 Soit une population $\mathcal{P}$ constituée par l'intervalle $[a,b]$. Si toutes les valeurs de la population sont équiprobables, c.-à-d. si $p(x)$ est une constante $p$, alors on dit que la distribution est uniforme, et on aura
 \begin{equation}
@@ -344,7 +346,7 @@ Soit une population $\mathcal{P}$ constituée par l'intervalle $[a,b]$. Si toute
     \item \textbf{Le mode} n'est pas défini, tandis que la \textbf{médiane} est égale à la moyenne.
 \end{itemize}
 
-\subsection{La distribution de Gauss ou << loi normale >>}
+\subsubsection{La distribution de Gauss ou << loi normale >>}
 
 \begin{figure}[h!]
     \centering
@@ -387,7 +389,7 @@ Soit une VA X gaussienne de moyenne $\mu$ et de variance $\sigma^2$. Considéron
     \item \textbf{Le mode} et \textbf{la médiane} sont identiques et donnés par la moyenne $\mu$
 \end{itemize}
 
-\subsection{Convergence vers la distribution de Gauss: le théorème central limite}
+\subsubsection{Convergence vers la distribution de Gauss: le théorème central limite}
 
 Considérons un processus complexe, constitué d'un très grand nombre de processus individuels, chacun décrit par une distribution de probabilité \textbf{absolument quelconque}, de type continu ou discret. On peut montrer que si l'effet de ces processus s'additionne, ce qui est très souvent le cas, alors la distribution de probabilité de la VA constituée par l'addition de ces sous-processus sera donnée par la convolution des distributions individuelles.
 
@@ -399,7 +401,7 @@ Ce résultat très important en théorie des probabilités est connu sous le nom
 
 La \textbf{variance globale} de la gaussienne sera donnée par la somme des variances de chaque sous-processus, et la \textbf{moyenne globale} sera égale à la moyenne des moyennes des chaque processus.
 
-\section{Incertitude de la moyenne empirique, intervalle et niveau de confiance}
+\subsection{Incertitude de la moyenne empirique, intervalle et niveau de confiance}
 
 Nous avons commencé ce chapitre par discuter du fait que la mesure de toute grandeur physique constitue une variable aléatoire, soit parce que la grandeur physique varie par elle-même de manière aléatoire, soit que le processus de mesure soit lui-même source d'erreurs. Souvent, les deux causes interviennent en même temps, mais puisqu'en métrologie nous nous intéressons surtout à la problématique de la précision des mesures, nous allons considérer à partir de maintenant que la fluctuation des mesures est due à la précision limitée des instruments, et que la grandeur à mesurer est, par nature, constante dans le temps.
 
@@ -444,15 +446,20 @@ ce qui signifie que la vraie valeur de $m$ a 95 \% de chances de se trouver dans
 
 Quand on donne un résultat \textbf{sans spécifier} le niveau de confiance, alors par défaut on fera l'hypothèse qu'il s'agit d'un intervalle à 1-$\sigma$, et que donc $\alpha=68.3\,\%$.
 
+\fi
+\iftrue
+
+\pagebreak
 \newpage
 
-\section{Exercices du chapitre 5}
+
+\subsection{Exercices du chapitre 4, série b}
 
 \begin{center}
     \Large \bf {\underline{Pour faire ces exercices, utilisez \texttt{matlab}}}
 \end{center}
 
-\subsection*{Exercice 5.1 - variable aléatoire discrète et distribution de probabilité}
+\subsubsection*{Exercice 4b.1 - variable aléatoire discrète et distribution de probabilité}
 
 On jette 2 dés à 6 faces. La variable aléatoire à laquelle on s'intéresse est la somme des points sur les deux faces supérieures. Répondre aux questions suivantes :
 \begin{itemize}
@@ -467,7 +474,7 @@ On jette 2 dés à 6 faces. La variable aléatoire à laquelle on s'intéresse e
     \item prenez deux dés, jetez-les 100 fois, et comparez la distribution des valeurs à ce que vous avez prédit théoriquement.
 \end{itemize}
 
-\subsection*{Exercice 5.2 - variable aléatoire discrète}
+\subsubsection*{Exercice 4b.2 - variable aléatoire discrète}
 
 La variable aléatoire discrète X possède la distribution de probabilité suivante
 \begin{center}
@@ -486,7 +493,7 @@ La variable aléatoire discrète X possède la distribution de probabilité suiv
     \item calculez le niveau de confiance à 1 et 2 $\sigma$, c.-à-d. la probabilité que $X\in[\langle x\rangle\pm\sigma]$ et que $X\in[\langle x\rangle\pm2\sigma]$
 \end{itemize}
 
-\subsection*{Exercice 5.3 - variable aléatoire continue}
+\subsubsection*{Exercice 4b.3 - variable aléatoire continue}
 
 La mesure d'une tension électrique soumise à des perturbations aléatoires générant une erreur de mesure autour de la valeur moyenne $U_0$ a fourni la distribution de probabilité \underline{continue} suivante
 $$
@@ -502,7 +509,7 @@ $$
     \item calculez le niveau de confiance de l'intervalle d'incertitude à 1, 2 et 3 $\sigma$, c.-à-d. la probabilité que $U\in[U_0-\Delta U,U_0+\Delta U]$ avec $\Delta U=\sigma$, $2\,\sigma$ et $3\,\sigma$)
 \end{itemize}
 
-\subsection*{Exercice 5.4 - variable aléatoire continue gaussienne}
+\subsubsection*{Exercice 4b.4 - variable aléatoire continue gaussienne}
 
 \begin{figure}[t]
     \centering
@@ -523,11 +530,11 @@ La figure \ref{fig:exe16} (gauche) représente une partie de l'image donnée par
 \end{itemize}
 Pour répondre à ces questions, vous pouvez calculez numériquement les intégrales avec \texttt{Matlab}, en approximant les intégrales par des sommes (soit $\int f(x)\text{d}x\approx\sum_if(x_i)\Delta x$), ou alors utiliser \texttt{mathematica}.
 
-\subsection*{Exercice 5.5 - densité de probabilité gaussienne}
+\subsubsection*{Exercice 4b.5 - densité de probabilité gaussienne}
 
 Démontrez la formule~\ref{eq:fwhm} de la largeur à mi-hauteur de la distribution gaussienne.
 
-\subsection*{Exercice 5.6 - théorème central limite}
+\subsubsection*{Exercice 4b.6 - théorème central limite}
 
 Lancez \texttt{matlab}, définissez un vecteur $x$ de 1000 éléments, et dont les éléments 400 à 600 valent 1, et les autres 0. En utilisant la fonction de convolution de \texttt{matlab}, \texttt{conv()} (voir help), convoluez ce vecteur avec lui-même 1 fois, puis 2 fois, 3 fois, etc. La syntaxe est la suivante:
 \begin{verbatim}
@@ -541,13 +548,14 @@ Lancez \texttt{matlab}, définissez un vecteur $x$ de 1000 éléments, et dont l
 Répétez les deux dernières lignes un grand nombre de fois. Comment se comporte le résultat de ces convolutions multiples ?
 
 \newpage
-\subsection*{Exercice 5.7 - incertitude et niveau de confiance}
+\subsubsection*{Exercice 4b.7 - incertitude et niveau de confiance}
 
 On a mesuré 10'000 fois la cote d'une pièce mécanique, et obtenu un écart-type des données de 0.005 mm. Quelle est l'incertitude sur la moyenne, pour un niveau de confiance à 2-$\sigma$ ?
 
-\subsection*{Exercice 5.8 - incertitude et niveau de confiance}
+\subsubsection*{Exercice 4b.8 - incertitude et niveau de confiance}
 
-Combien de mesures faut-il effectuer pour s'assurer que, pour l'exemple de l'Exercice 5.15 ci-dessus, l'incertitude à 3-$\sigma$ sur la mesure soit inférieure à 0.001 mm ?
+Combien de mesures faut-il effectuer pour s'assurer que, pour l'exemple de l'Exercice 4b.7 ci-dessus, l'incertitude à 3-$\sigma$ sur la mesure soit inférieure à 0.001 mm ?
 
+\fi
 
 \end{document}

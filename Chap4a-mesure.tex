@@ -1,16 +1,39 @@
 \documentclass[main.tex]{subfiles}
 \begin{document}
 
-\chapter{La mesure et sa représentation}
+\chapter{Analyse de mesures}
 \label{chap:measurements}
+
+\iftrue
+
+
+\begin{figure}[h]
+   \centering
+   \includegraphics[width=0.96\textwidth]{assets/figures/flowChartTechMes.pdf} 
+   \caption{Techniques de mesure: étapes clés}
+   \label{fig:flowChartTechMes_chaine_de_mesure_ch4}
+\end{figure}
+
+Reprenant le schéma bloc des étapes clé des techniques de mesure de la figure \ref{fig:flowChartTechMes_chaine_de_mesure_ch4}, nous allons cette fois aborder l'analyse des mesures. Nous procéderons en 4 étapes afin d'introduire les définitions et les outils nécessaires aux traitements mathématiques:
+
+\begin{itemize}
+\item[La mesure et sa représentation]
+\item[La mesure vue comme stochastique]
+\item[Les mesures multidimensionnelles]
+\item[L'ajustement du modèle]
+\end{itemize}
+
+Commençons par la première partie, la mesure et sa représentation, où nous reprendrons les outils de base que sont la moyenne et l'écart-type, puis introduirons l'histogramme et la médiane.
+
+\section{La mesure et sa représentation}
 
 Lors de tout procédé expérimental, on effectue des mesures. Une mesure brute, seule, ne veut presque rien dire (éventuellement on obtient l'ordre de grandeur). Il faut lui adjoindre une estimation d'incertitude. La plupart du temps, lorsque l'on a besoin d'une connaissance précise des caractéristiques d'un système quelconque, on va réaliser un grand nombre de mesures individuelles de ces propriétés, et c'est l'analyse statistique des mesures qui va nous permettre d'estimer les propriétés du système, avec marge d'incertitude. Cette démarche en deux temps, (1) acquisition d'un nombre significatif de données (2) traitement statistique de ces données, constitue le c\oe ur de la démarche expérimentale. Elle seule permet d'obtenir des résultats valides.
 
 Avant d'appliquer les outils de l'analyse statistique à un échantillon de mesures, il est cependant indispensable d'examiner \textbf{la qualité de l'échantillon}: existe-t-il des valeurs aberrantes qu'il faudrait rejeter ? Y a-t-il assez de mesures ? etc. On utilise pour cela des outils de représentation simples: moyenne, écart-type, et surtout, l'histogramme. Ce chapitre est donc dédié à la définition de ce que c'est qu'une mesure, et des outils permettant de la valider, et de la caractériser.
 
-\section{Définitions}
+\subsection{Définitions}
 
-\subsection{L'échantillon}
+\subsubsection{L'échantillon}
 
 Soit une grandeur physique $\mathcal{G}$ (par exemple une tension électrique) et un ensemble de $N_m$ mesures de $\mathcal{G}$. Cet ensemble est appelé un \textbf{échantillon} $\mathcal{E}$ de $\mathcal{G}$. Quelques exemples:
 \begin{description}
@@ -21,7 +44,7 @@ Soit une grandeur physique $\mathcal{G}$ (par exemple une tension électrique) e
 \end{description}
 On voit que les éléments d'un échantillon peuvent être de tout type, entier ou réel, et même non numérique. Ce qui caractérise un échantillon, c'est la \textbf{nature} et le \textbf{nombre} de ses éléments (quoi, et combien).
 
-\subsection{La population}
+\subsubsection{La population}
 
 La population $\mathcal{P}$ d'une grandeur $\mathcal{G}$ est définie par \textbf{l'ensemble de toutes les valeurs possibles que peut prendre cette grandeur}. C'est à partir de la population que l'on forme des échantillons. Quelques exemples:
 \begin{description}
@@ -38,7 +61,7 @@ Il n'est pas toujours évident de déterminer la population d'une mesure. Seule 
 
 À quoi sert-il de déterminer la population ? Tout simplement à connaître à l'avance les résultats possibles des mesures, et éliminer par avance les mesures impossibles. Un exemple: admettons qu'un ingénieur ait mis au point un appareil automatique de mesure de diamètre, et que l'on soumette à cet appareil un axe cylindrique de 20 mm de diamètre. Quatre mesures sont effectuées, et l'échantillon est le suivant $\mathcal{E}=[19.9,20.1,1.7,19.8]$ mm. Immédiatement, on voit que la valeur des 3$^\text{ème}$ mesures n'a aucun sens, elle ne peut vraiment pas faire partie de la population. L'ingénieur en conclut qu'il y a un problème avec le procédé de mesure.
 
-\subsection{L'analyse statistique}
+\subsubsection{L'analyse statistique}
 
 L'analyse statistique \textit{est un ensemble de méthodes de traitement numérique d'un échantillon permettant d'estimer les propriétés de la population dont il est issu.}
 
@@ -46,11 +69,11 @@ Pour donner un exemple, imaginons que nous disposions d'un échantillon de mesur
 
 On peut aussi dire: \textit{l'analyse statistique permet de réduire un ensemble de données brutes en un petit nombre de valeurs caractéristiques de la population associée}. C'est assez identique à la première définition. On parle aussi de \textbf{réduction} des données.
 
-\section{Moyenne, écart quadratique moyen, écart-type}
+\subsection{Moyenne, écart quadratique moyen, écart-type}
 
 Soit un échantillon de $N_m$ mesures de la grandeur $\mathcal{G}$. Désignons par $x_i$ la valeur de la mesure individuelle numéro $i$, avec $i=1\dots N_m$.
 
-\subsection{La moyenne de l'échantillon}
+\subsubsection{La moyenne de l'échantillon}
 
 Elle est définie par
 \begin{equation}
@@ -58,7 +81,7 @@ Elle est définie par
 \end{equation}
 Notation: les parenthèses angulaires $\langle\cdot\rangle$ désignent l'opération de moyenne. On rencontre aussi dans la littérature le symbole $\overline{x}$, mais la première notation est plus fréquente.
 
-\subsection{L'écart quadratique moyen de l'échantillon}
+\subsubsection{L'écart quadratique moyen de l'échantillon}
 
 C'est la moyenne de l'écart quadratique (c.-à-d. au carré) entre les éléments de l'échantillon et sa valeur moyenne $\langle x\rangle$,
 \begin{equation}
@@ -78,7 +101,7 @@ d'où, en appliquant la définition de la moyenne
 \end{equation}
 À noter que l'on désigne aussi l'écart quadratique moyen par la \textbf{variance} de l'échantillon, mais comme ce dernier terme possède une définition très spécifique en relation avec les distributions de probabilité, il vaut mieux ne pas l'utiliser dans le contexte d'un échantillon de taille finie.
 
-\subsection{L'écart-type de l'échantillon}
+\subsubsection{L'écart-type de l'échantillon}
 
 Il est simplement défini par la racine carrée de l'écart quadratique moyen, et on le note avec le symbole $\sigma$
 \begin{equation}
@@ -93,7 +116,7 @@ Il représente la \textbf{dispersion typique des mesures} autour de la moyenne.
     }
 \end{center}
 
-\section{La représentation d'un échantillon de mesures à l'aide d'un histogramme}
+\subsection{La représentation d'un échantillon de mesures à l'aide d'un histogramme}
 
 \begin{figure}[htb]
     \centering
@@ -122,7 +145,7 @@ Toute la difficulté consiste à choisir le nombre de classes. Dans l'exemple ci
 
 Une bonne méthode empirique pour choisir le nombre de classes est de prendre la racine carrée du nombre de mesures. Pour 100'000, nous devrions prendre 316 classes. Quoi qu'il en soit, le nombre optimal de classes sera celui qui nous permettra de visualiser au mieux les propriétés de notre échantillon de mesures. On a vu que pour notre exemple, avec 200 classes on obtient en pratique une très bonne représentation.
 
-\subsection{Comment interpréter un histogramme ?}
+\subsubsection{Comment interpréter un histogramme ?}
 
 \begin{itemize}
     \item si l'histogramme est symétrique, alors la valeur sur laquelle il est centré est une indication de la valeur moyenne de l'échantillon; s'il n'est pas symétrique, on ne peut rien dire sur la valeur moyenne, et il faut faire un calcul;
@@ -131,7 +154,7 @@ Une bonne méthode empirique pour choisir le nombre de classes est de prendre la
     \item la forme de l'histogramme est une indication du type de processus statistique à l'\oe uvre lors de l'acquisition de l'échantillon (on aura des processus de type gaussien, poissonien, binomial, uniforme, etc - que l'on introduira plus loin). Or, il est possible de prévoir, pour un processus de mesure donné, le type de distribution attendu. La comparaison de la forme de l'histogramme des mesures avec la distribution prévue nous permettra de confirmer que le système se comporte de la manière attendue. Par exemple, le pic dans l'histogramme de l'exemple précédent dévoile l'existence du signal parasite, car en général, toutes les mesures de grandeurs physiques suivent des distributions régulières (ici une distribution dite gaussienne).
 \end{itemize}
 
-\subsection{La distribution gaussienne}
+\subsubsection{La distribution gaussienne}
 
 On discutera, dans le chapitre dédié aux distributions, de la répartition dite gaussienne d'une mesure aléatoire. Mais comme il s'agit d'une distribution très fréquemment utilisée en pratique, et que nous utilisons souvent comme référence, il est utile de l'introduire rapidement ici.
 
@@ -141,7 +164,7 @@ Dans la grande majorité des cas, lorsque l'on mesure la valeur d'une grandeur p
 \end{equation}
 ou $\mu$ représente la moyenne des mesures et $\sigma$ l'écart-type de la grandeur physique $x$. Les 100'000 points dont on a représenté l'histogramme à 20 classes en figure~\ref{fig:hapoabdc} suit une distribution gaussienne de moyenne $\mu=0$ et d'écart-type $\sigma=1$.
 
-\subsection*{Histogramme, ou distribution de probabilité ? et combien de mesures faut-il acquérir ?}
+\subsubsection*{Histogramme, ou distribution de probabilité ? et combien de mesures faut-il acquérir ?}
 
 Il y a une grande différence conceptuelle entre un histogramme et une distribution de probabilité. Un histogramme n'est qu'une représentation graphique des fréquences associées à \textbf{un seul échantillon} de mesures. En principe, si on enregistre N échantillons de mesures de la même grandeur physique, on va tomber sur N histogrammes légèrement différents les uns des autres car il n'y a aucune raison de mesurer à chaque fois la même série de valeurs !
 
@@ -161,7 +184,7 @@ On peut montrer, en théorie statistique, que si on dispose de $N_m$ mesures d'u
 \end{equation}
 Par conséquent, l'erreur relative due au nombre fini de mesures va comme $1/\sqrt{N_m}$. Par conséquent, si on veut une précision de 1\% sur la moyenne, il faudra acquérir au moins 10'000 mesures. Cette règle fonctionne très bien, pour tout type de mesure.
 
-\section{Histogramme cumulé}
+\subsection{Histogramme cumulé}
 
 Un autre outil de représentation pratique de l'échantillon est constitué par le cumul des fréquences, c.-à-d. la détermination du nombre de fois $F_k$ que la mesure x est comprise dans une classe donnée ou dans les classes précédentes,
 $$
@@ -216,15 +239,15 @@ où on voit naturellement que $F_{N_c}=N_m$, c.-à-d. que la fréquence cumulée
 
 Par ailleurs, puisque la fréquence cumulée est une somme, elle représente en quelque sorte l'intégrale de la fréquence; inversement, on peut interpréter la fréquence $f_k$ comme la dérivée de la fréquence cumulée. Nous reviendrons sur ces notions lors de l'introduction des distributions de probabilité, dans un prochain chapitre.
 
-\section{Médiane et mode}
+\subsection{Médiane et mode}
 
-\subsection{Médiane}
+\subsubsection{Médiane}
 
 La médiane de l'échantillon est définie par la valeur qui sépare l'histogramme des fréquences en deux parties de somme égales, en d'autres termes il existe autant de mesures de valeur inférieure à la médiane que de mesures de valeur supérieure à la médiane. La valeur médiane ne fait pas toujours partie de l'échantillon, ni de la population. Par exemple, dans l'exemple de l'échantillon à 36 mesures, il y a 12 valeurs inférieures ou égales à 3, mais 19 valeurs inférieures ou égales à 4. Or la médiane devrait séparer l'échantillon en 18 mesures inférieures à elle-même, et 18 mesures supérieures. Ce n'est pas possible avec cet échantillon. On choisira alors, pour la valeur médiane, la valeur partageant l'échantillon en deux parties de dimensions les plus égales possible, en l'occurrence, ici, 4.
 
 À noter que lorsque l'histogramme est symétrique autour de la valeur moyenne, la médiane est naturellement égale à la moyenne de l'échantillon.
 
-\subsection{Mode}
+\subsubsection{Mode}
 
 Le mode de l'échantillon est défini par la valeur la plus représentée, c'est-à-dire la valeur ayant la plus haute fréquence. Si l'échantillon consiste en une série de mesures ayant toutes des valeurs différentes, ce qui arrive souvent lorsque les mesures sont des nombres réels, alors la notion de mode n'a pas de sens, car aucune valeur n'est plus représentée qu'une autre.
 
@@ -232,15 +255,21 @@ En revanche, si on constitue l'histogramme de l'échantillon, et que l'on choisi
 
 Dans le cas de notre échantillon de 36 mesures, si les mesures sont réparties en 5 classes, on trouve alors que la classe numéro 3 est la plus représentée, correspondant aux mesures comprises dans l'intervalle 4 à 6.
 
+\fi
+\iftrue
 
-\section{Exercices du chapitre 4}
+%\pagebreak
+\newpage
+
+
+\subsection{Exercices du chapitre 4, série a}
 
 
 \begin{center}
     \Large \bf {\underline{Pour faire ces exercices, utilisez \texttt{matlab}}}
 \end{center}
 
-\subsection*{Exercice 4.1: caractérisation de la qualité d'usinage de lentilles optiques}
+\subsubsection*{Exercice 4a.1: caractérisation de la qualité d'usinage de lentilles optiques}
 
 Une industrie de matériel optique fabrique des lentilles de focale $f=100$ mm, plan-convexes (première surface plane, seconde surface sphérique). L'indice de réfraction du verre des lentilles est $n=1.5$. La relation entre la focale de la lentille et le rayon de courbure de la surface sphérique est
 $$
@@ -257,7 +286,7 @@ Pour la mise au point du procédé de fabrication, 1000 lentilles sont usinées 
     \item votre collègue utilise le tableau des fréquences que vous lui avez présenté pour calculer la moyenne et l'écart-type de l'échantillon, et arrive à des chiffres différents de ce que vous avez calculé au premier point ci-dessus. Expliquez-lui pourquoi ce sont vos résultats qui sont les bons.
 \end{enumerate}
 
-\subsection{Exercice 4.2: distance de pénétration des rayons $\gamma$ dans un substrat de germanium}
+\subsubsection{Exercice 4a.2: distance de pénétration des rayons $\gamma$ dans un substrat de germanium}
 
 On dispose de 50 mesures de la distance de pénétration en mm (avant absorption) de photons $\gamma$ (rayons gamma à très haute énergie) dans un morceau de germanium,
 \begin{center}
@@ -279,7 +308,7 @@ Ces données sont contenues dans le fichier \texttt{PhotonsGammaGermanium.txt} d
     \item calculez la médiane et le mode pour l'histogramme de largeur de classe 1200 mm.
 \end{enumerate}
 
-\subsection{Exercice 4.3: mesure de la pression atmosphérique martienne, Gusev crater, Mars}
+\subsubsection{Exercice 4a.3: mesure de la pression atmosphérique martienne, Gusev crater, Mars}
 
 Le robot d'exploration Curiosity a mesuré, le 17 novembre 2014, la pression atmosphérique à 1 m du sol, en pascal (Pa). 275 points de mesure ont étés enregistrés. Les mesures sont données dans le fichier \texttt{GroundPressureGusev.txt} distribué avec cette série d'exercices. Chargez ces mesures au sein de \texttt{matlab}, et répondez aux questions suivantes:
 \begin{enumerate}
@@ -289,7 +318,7 @@ Le robot d'exploration Curiosity a mesuré, le 17 novembre 2014, la pression atm
     \item afin que l'eau puisse rester liquide au sol, à $10^{\circ}$C, il faut que la pression soit supérieure à 890 Pa; quelle est alors la probabilité que l'eau puisse rester liquide pendant les phases de haute pression ?
 \end{enumerate}
 
-%\end{document}
+\fi
 
 
 \end{document}

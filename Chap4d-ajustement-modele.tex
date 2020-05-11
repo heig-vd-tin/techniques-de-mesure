@@ -1,12 +1,14 @@
 \documentclass[main.tex]{subfiles}
 \begin{document}
 
-\chapter{Ajustement du modèle}
+\iftrue
+\newpage
+\section{Ajustement du modèle}
 \label{chap:model-adjustment}
 
 Ajustement d'un modèle $y=f(\vec{x},\vec{a})$ sur une série de mesures.
 
-\section{Introduction}
+\subsection{Introduction}
 
 Admettons que l'on soit en présence d'un circuit de type RLC série avec $R=10$ k$\Omega$ et $L=10$ H mais dont on ne connait pas la valeur de C. Une méthode très précise pour déterminer la valeur de C consiste à mesurer la fonction de transfert courant/tension dans le domaine fréquentiel, et \textbf{d'ajuster} sur cette mesure le modèle de la fonction de transfert, donnée par
 \begin{equation}
@@ -15,7 +17,7 @@ Admettons que l'on soit en présence d'un circuit de type RLC série avec $R=10$
 \end{equation}
 L'ajustement consistant, dans le cas présent, à trouver la valeur de C qui \textbf{minimise} l'écart entre modèle et mesures.
 
-Pourquoi considérer toute une gamme de fréquences plutôt qu'une seule mesure à une fréquence donnée ? si nous connaissons en effet $Y$ à une fréquence donnée, nous pourrions très bien utiliser l'équation~\ref{eq:Y} pour en tirer C, et, en utilisant les formules du chapitre précédent, déterminer l'incertitude sur C à partir de l'incertitude sur $Y$. Mais pour que cela fonctionne bien, il faut être certain qu'il n'existe pas d'erreur systématique sur la mesure de $Y$, et que l'erreur aléatoire sur Y soit bien connue.
+Pourquoi considérer toute une gamme de fréquences plutôt qu'une seule mesure à une fréquence donnée ? si nous connaissons en effet $Y$ à une fréquence donnée, nous pourrions très bien utiliser l'équation \ref{eq:Y} pour en tirer C, et, en utilisant les formules du chapitre précédent, déterminer l'incertitude sur C à partir de l'incertitude sur $Y$. Mais pour que cela fonctionne bien, il faut être certain qu'il n'existe pas d'erreur systématique sur la mesure de $Y$, et que l'erreur aléatoire sur Y soit bien connue.
 
 En réalité, à cause du \textbf{bruit de mesure}, on peut se trouver dans une situation impossible à résoudre: admettons par exemple que la mesure bruitée de $Y$ soit égale à $1.5\times10^{-4}$, or, il est impossible en théorie que $Y$ soit supérieur à $1/R$ c.-à-d. $\text{max}(Y)=10^{-4}$. Si on persiste à utiliser cette valeur de $Y$, on tombe sur $\left(\omega L-\frac{1}{\omega C}\right)^2<0$, ce qui est impossible. On voit donc par cet exemple que le bruit peut rendre une mesure unique \textbf{complètement inutile} !
 
@@ -36,7 +38,7 @@ En utilisant N mesures de $Y$ en fonction de N valeurs de $\omega$, on a obtenu 
 
 Par ailleurs, la comparaison visuelle des mesures et du modèle permet d'évaluer s'il existe des erreurs systématiques ou aberrantes dans les mesures, et donc de les éliminer. En conclusion, lorsqu'on en a la possibilité, il est \textbf{toujours} préférable de déterminer la valeur d'un paramètre inconnu à travers \textbf{l'ajustement d'un modèle} plutôt que sur une valeur unique.
 
-\section{Théorie}
+\subsection{Théorie}
 
 \begin{wrapfigure}[20]{r}[5pt]{70mm}
     \centering
@@ -53,7 +55,7 @@ Deux cas se présentent dans la pratique: (1) on connait déjà le modèle sous-
 
 Mais dans le cas d'un modèle polynomial, il faut faire attention: on sait que par 2 points, on peut faire passer une droite, et que par 3 points, un polynôme en $x^2$ etc, donc si on a $N$ points, nous pourrions trouver un polynôme de degré $N-1$ qui passerait par tous les points. Mais cela n'a aucun sens ! en effet, \textbf{toute mesure est bruitée}, c'est-à-dire affectée d'une erreur aléatoire inconnue, par conséquent ajuster un modèle qui passerait par tous les points de mesure équivaut à s'ajuster à du bruit, ce qui conduirait à un modèle polynomial de nos mesures qui ne correspondrait à rien... Par ailleurs, lorsqu'on essaye d'ajuster un polynôme avec exactitude sur trop de points, on aboutit en général à un polynôme avec d'énormes oscillations entre les points, ce qui montre qu'il y a un problème. Donc, on se contentera en général de trouver le degré du polynôme tel que l'écart de l'ajustement soit assez petit, \textit{sans} qu'il y ait d'oscillations.
 
-\subsection{La méthode de la minimisation de l'écart quadratique entre modèle et mesures}
+\subsubsection{La méthode de la minimisation de l'écart quadratique entre modèle et mesures}
 
 Admettons donc que nous ayons choisi un modèle avec paramètres, $y=f(\vec{x},\vec{a})$, censé décrire nos mesures. Par exemple, le modèle associé aux mesures de la fig.~\ref{fig:ex1} est le suivant:
 \begin{equation}
@@ -99,7 +101,7 @@ Par essais successifs, en restreignant l'intervalle de recherche de $a$ autour d
 
 Lorsqu'il y a plus que 1 paramètre, il suffit d'effectuer le calcul de $\mathcal{Q}^2$ sur des intervalles bien choisis pour l'ensemble des paramètres, et de déterminer les valeurs des paramètres où $\mathcal{Q}^2$ est minimum (fond de la vallée d'une carte en $a_1,a_2$ pour un problème à deux paramètres, etc.)
 
-\subsection{Soyons plus malins, et utilisons la dérivée !}
+\subsubsection{Soyons plus malins, et utilisons la dérivée !}
 
 En effet, le minimum de la courbe $\mathcal{Q}^2(a)$, qui nous donne le lieu de la solution optimale, peut se trouver facilement, sans faire de calculs numériques (ni programmation) en calculant analytiquement la dérivée de $\mathcal{Q}^2(a)$ par rapport à $a$, et en posant = 0. On trouve une équation en $a$ dont la solution est forcément la valeur optimale de $a$. Parfois, il y a plusieurs solutions à l'équation de la dérivée, et une de ces solutions peut en fait indiquer un \textit{maximum} de $\mathcal{Q}^2(a)$, ou un \textbf{minimum local}, comme on peut le voir sur les Figs.~\ref{fig:q2c} ou~\ref{fig:q2a}, donc il faut toujours être un peu prudent et vérifier si on a trouvé la bonne solution - en général, cependant, on tombe souvent sur le minimum de $\mathcal{Q}^2(a)$.
 
@@ -180,7 +182,7 @@ La matrice $A$ et le vecteur $\vec{b}$ se calculent numériquement à partir de 
     \vec{a}=A^{-1}\cdot\vec{b}
 \end{equation}
 
-\section{Application: ajustement d'une droite $y=ax+b$ et lien avec la corrélation linéaire}
+\subsection{Application: ajustement d'une droite $y=ax+b$ et lien avec la corrélation linéaire}
 
 Très souvent dans la pratique on observe des processus linéaires ou facilement linéarisables, c.-à-d. pouvant se ramener à une droite $y=mx+p$, $x$ et $y$ étant les mesures et $m$ et $p$ les paramètres inconnus que l'on cherche. Par exemple la décharge d'un condensateur s'exprime par une relation exponentielle $u(t)=u_0\exp{-kt}$ où $1/k$ est la constante de temps du condensateur. En mesurant $u$ pour une série de valeurs de $t$, et en calculant le log naturel de $u$ on obtient la relation linéarisée $\ln{u}=\ln{u_0}-kt$. En ajustant une droite sur les points de mesure $\ln{u_i}$ et $t_i$ on va pouvoir trouver $u_0$ et la constante de temps $1/k$.
 
@@ -231,7 +233,7 @@ dont la solution est (à vérifier vous-même)
 \end{gather}
 Nous obtenons donc un lien direct entre corrélation et pente de la droite de meilleur ajustement. Voir les exercices pour des exemples.
 
-\section{Un exemple complet en deux dimensions}
+\subsection{Un exemple complet en deux dimensions}
 
 Soit la mesure de la cote d'une surface (plus ou moins) plane, en 150 points de coordonnées $\vec{x}=[x,y]_{i=1\dots 150}$. Les points sont mesurés sur une grille de 15-par-10 éléments, la première composante $x$ est la coordonnée horizontale,
 \begin{center}
@@ -367,17 +369,22 @@ La solution, hormis le premier coefficient, est assez proche des valeurs des par
     \label{fig:dmr}
 \end{figure}
 
+\fi
+\iftrue
+
+\pagebreak
 \newpage
 
+
 %----------
-\section{Exercices du chapitre 7}
+\subsection{Exercices du chapitre 4, série d}
 %----------
 
 \begin{center}
     \Large \bf {\underline{Pour faire ces exercices, utilisez \texttt{matlab}}}
 \end{center}
 
-\subsection*{Exercice 7.1 - corrélation linéaire, mesure d'une résistance électrique}
+\subsubsection*{Exercice 4d.1 - corrélation linéaire, mesure d'une résistance électrique}
 
 Lors d'une séance de travaux pratiques, les étudiants doivent mesurer la valeur d'une résistance $R$. Chaque étudiant dispose d'un voltmètre, d'un ampèremètre et d'une alimentation à courant continu. Un étudiant a obtenu les 5 mesures suivantes:
 \begin{center}
@@ -395,7 +402,7 @@ Ensuite, \textbf{à la main (c.-à-d. sans \texttt{Matlab}, mais avec une calcul
     \item refaites le calcul de la régression en ajustant cette fois-ci le modèle \textbf{inverse} $\text{I}=\text{a}\,\text{U}+\text{b}$. Concluez.
 \end{enumerate}
 
-\subsection*{Exercice 7.2 - corrélation linéaire, test d'un modèle scientifique}
+\subsubsection*{Exercice 4d.2 - corrélation linéaire, test d'un modèle scientifique}
 
 Dans le cadre d'un projet de recherche en instrumentation pour l'astrophysique, nous avons obtenu deux séries de mesures de la résolution angulaire à travers l'atmosphère terrestre turbulente, par deux moyens différents et totalement indépendants. Ces deux séries sont fournies dans le fichier \texttt{AngularResolutionSeries.txt}, sur \newline
 \texttt{eistore1/profs/LJT/metrologie/cours/data...}. Lancez \texttt{Matlab} et chargez ces deux séries dans deux variables, $x$ et $y$.
@@ -404,7 +411,7 @@ Dans le cadre d'un projet de recherche en instrumentation pour l'astrophysique, 
     \item calculez aussi, pour les deux séries, la valeur médiane et le mode.
 \end{enumerate}
 
-\subsection*{Exercice 7.3 - corrélation polynomiale}
+\subsubsection*{Exercice 4d.3 - corrélation polynomiale}
 
 Soit deux grandeurs physiques liées par la relation suivante:
 $$
@@ -419,7 +426,7 @@ On a mesuré en laboratoire la série de 11 couples (x,y) suivante:
 \end{center}
 Linéarisez le modèle, puis faites un ajustement polynomial d'ordre 2, et calculez les coefficients a, b, et c qui réalisent le meilleur ajustement du modèle ci-dessus avec les mesures. Solution en l'absence d'erreurs de mesures: $[a,b,c]=[-5,3,-1]$.
 
-\subsection*{Exercice 7.4 - linéarisation d'un modèle exponentiel, régression linéaire}
+\subsubsection*{Exercice 4d.4 - linéarisation d'un modèle exponentiel, régression linéaire}
 
 Un biologiste a mesuré le nombre \underline{moyen} de bactéries encore actives en fonction de la durée d'un traitement chimique sur un substrat. Il a obtenu les résultats ci-dessous
 \begin{center}
@@ -443,7 +450,7 @@ Faites la transformation qu'il faut sur $n(\Delta t)$ pour transformer cette exp
     \item admettons que les spécifications de propreté pour les instruments chirurgicaux sont tels qu'il ne doit pas exister plus de 1 bactérie en moyenne pour 100 mm$^2$. Du modèle empirique que vous avez déduit des données, déterminez la durée de stérilisation nécessaire pour remplir cette spécification.
 \end{itemize}
 
-\subsection*{Exercice 7.5 - test de corrélation linéaire}
+\subsubsection*{Exercice 4d.5 - test de corrélation linéaire}
 
 Les astrologues et autres charlatans aiment à dire qu'il existe une corrélation entre les phases lunaires et le nombre de naissances, afin de démontrer qu'il existe un lien entre les astres et les hommes (mais comme c'est chou !)
 
@@ -458,7 +465,7 @@ où la phase évolue entre 0 et 100 entre deux nouvelles Lunes consécutives, la
 
 Calculez le coefficient de corrélation linéaire entre la phase lunaire et le nombre de naissances. Concluez.
 
-\subsection*{Exercice 7.6 - régression polynomiale}
+\subsubsection*{Exercice 4d.6 - régression polynomiale}
 
 \begin{center}
     \begin{tabular}{c|ccccccc}
@@ -468,7 +475,7 @@ Calculez le coefficient de corrélation linéaire entre la phase lunaire et le n
 \end{center}
 Ajustez le polynôme de 3-ème degré $$y(x)=a\,x^3+b\,x^2+c\,x+d$$ aux données ci-dessus.
 
-\subsection*{Exercice 7.7 - régression générale}
+\subsubsection*{Exercice 4d.7 - régression générale}
 
 Soit la fonction
 $$
@@ -488,7 +495,7 @@ $$
 
 
 
-\subsection*{Exercice 7.8 - optimisation d'un processus}
+\subsubsection*{Exercice 4d.8 - optimisation d'un processus}
 
 \begin{wrapfigure}[13]{l}[0pt]{6cm}
     \centering
@@ -519,5 +526,6 @@ Lors d'essais, on a mesuré l'erreur en fonction de $\Delta t$, et on a relevé 
 
 Par ajustement du modèle, déterminez le pas d'horloge optimal, c'est-à-dire celui qui minimise l'erreur totale (faites tout d'abord un graphique des points de mesure, car il faut TOUJOURS examiner les données avant de les exploiter).
 
+\fi
 
 \end{document}
